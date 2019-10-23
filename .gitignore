@@ -1,3 +1,6 @@
 config/*
 misc/*
 .pylintrc
+src/__pycache__/*
+src/TeleSync.session
+
