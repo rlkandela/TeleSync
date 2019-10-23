@@ -11,6 +11,7 @@ def get_api_id():
     """Method to read api_id from ID_FILE"""
     with open(ID_FILE, "r") as f:
         api_id = f.readline()
+        api_id = api_id.rsplit("\n")[0]
         f.close()
     return api_id
 
@@ -18,5 +19,6 @@ def get_hash_id():
     """Method to read api_hash from HASH_FILE"""
     with open(HASH_FILE, "r") as f:
         api_hash = f.readline()
+        api_hash = api_hash.rstrip("\n")
         f.close()
     return api_hash
