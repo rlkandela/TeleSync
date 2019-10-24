@@ -21,7 +21,7 @@ def save_api_id():
         except IOError:
             print("Could not create or modify the file")
     else:
-        if input("There is already an id saved, do you want to rewrite it? y/N") == "y":
+        if input("There is already an id saved, do you want to rewrite it? y/N ") == "y":
             try:
                 with open(system_config.SYNC_INSTALLATION_FOLDER+"config/id_file.conf", "w") as f:
                     api_id = int(input("Enter the app id: "))
@@ -49,7 +49,7 @@ def save_api_hash():
         except IOError:
             print("Could not create or modify the file")
     else:
-        if input("There is already a hash saved, do you want to rewrite it? y/N") == "y":
+        if input("There is already a hash saved, do you want to rewrite it? y/N ") == "y":
             try:
                 with open(system_config.SYNC_INSTALLATION_FOLDER+"config/hash_file.conf", "w") as f:
                     api_hash = input("Enter the app hash: ")
@@ -63,6 +63,7 @@ def save_api_hash():
 
 def save_api_config():
     os.chdir(system_config.SYNC_INSTALLATION_FOLDER+"src/")
+    print("Go to https://my.telegram.org/ for activating an application and get an api id and an api hash")
     save_api_id()
     save_api_hash()
     api_id = api_config.get_api_id()
