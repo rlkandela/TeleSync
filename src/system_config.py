@@ -3,9 +3,9 @@
 import os
 
 # DEBUG
-SYNC_INSTALLATION_FOLDER = "/home/rlkandela/Documents/TeleSync/"
+SYNC_INSTALLATION_FOLDER = "/home/rlkandela/Documents/TeleSync/TeleSync/"
 # DEBUG
-# SYNC_INSTALLATION_FOLDER = "/usr/local/bin/TeleSync/"
+# SYNC_INSTALLATION_FOLDER = "/opt/TeleSync/"
 
 SYNC_CONFIG_DIR = "/home/"+os.environ['USER']+"/.config/TeleSync/"
 SYNC_CONFIG_FILE = SYNC_CONFIG_DIR+"sync.conf"
