@@ -1,6 +1,7 @@
 # coding: utf-8
 """File for configuring the installation"""
 import os
+import sys
 from telethon import TelegramClient
 import system_config
 import api_config
@@ -62,15 +63,20 @@ def save_api_hash():
 
 
 def save_api_config():
-    os.chdir(system_config.SYNC_INSTALLATION_FOLDER+"src/")
-    print("Go to https://my.telegram.org/ for activating an application and get an api id and an api hash")
-    save_api_id()
-    save_api_hash()
-    api_id = api_config.get_api_id()
-    api_hash = api_config.get_hash_id()
-    client = TelegramClient("TeleSync", api_id, api_hash)
-    client.start()
-    client.disconnect()
+    if os.geteuid() != 0:
+        os.chdir(system_config.SYNC_INSTALLATION_FOLDER+"src/")
+        print("Go to https://my.telegram.org/ for activating an application and get an api id and an api hash")
+        save_api_id()
+        save_api_hash()
+        api_id = api_config.get_api_id()
+        api_hash = api_config.get_hash_id()
+        client = TelegramClient("TeleSync", api_id, api_hash)
+        client.start()
+        client.disconnect()
+    else:
+        sys.stderr.write("Running as root not allowed.")
+
+# TODO ask for root and copy items to installation dir
 
 
 if __name__ == "__main__":
