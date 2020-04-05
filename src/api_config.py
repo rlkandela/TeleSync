@@ -1,4 +1,4 @@
-
+# coding: utf-8
 """File containing methods to read api_id and api_hash"""
 
 # File where the telegram app id is saved
@@ -6,6 +6,9 @@ ID_FILE = "../config/id_file.conf"
 
 # File where the telegram app hash is saved
 HASH_FILE = "../config/hash_file.conf"
+
+# Name of the telegram channel where the files will be uploaded
+CHANNEL_NAME = "TeleSync"
 
 def get_api_id():
     """Method to read api_id from ID_FILE"""
