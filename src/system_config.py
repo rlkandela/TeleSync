@@ -10,6 +10,8 @@ SYNC_INSTALLATION_FOLDER = "/home/rlkandela/Documents/TeleSync/TeleSync/"
 # Main program must make sure that its not running as root and ask after it for root password
 SYNC_CONFIG_DIR = "/home/"+os.environ['USER']+"/.config/TeleSync/"
 SYNC_CONFIG_FILE = SYNC_CONFIG_DIR+"sync.conf"
+MAX_DIR_SIZE = 1
+TMP_FOLDER = "/tmp/TeleSync/"
 
 def get_synchronized_items():
     """Returns a list of the folders and files synchronized"""
