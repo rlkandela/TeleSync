@@ -1,8 +1,9 @@
 # coding: utf-8
-"""File for checking if a folder can be uploaded or not given the maximum size"""
+"""File for retrieving from the channel the uploaded files and its locations"""
 import os
 import telethon
 import api_config
+import folder_checking
 
 async def get_messages(client):
     ret = []
@@ -16,11 +17,17 @@ async def get_messages(client):
         del msgs[0]
         return msgs
     else:
+        # TODO Crear canal
         return []
 
 def get_filenames(msgs):
     return [msg.media.document.attributes[0].file_name for msg in msgs]
 
+def get_paths(msgs):
+    return [msg.message for msg in msgs]
+
 async def parse_uploaded_items(client):
     msgs = await get_messages(client)
     filenames = get_filenames(msgs)
+    uploaded_items = get_paths(msgs)
+    return (msgs,uploaded_items)
