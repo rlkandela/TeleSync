@@ -63,6 +63,7 @@ def save_api_hash():
 
 
 def save_api_config():
+    """Function that runs a little _installer_ INCOMPLETE"""
     if os.geteuid() != 0:
         os.chdir(system_config.SYNC_INSTALLATION_FOLDER+"src/")
         print("Go to https://my.telegram.org/ for activating an application and get an api id and an api hash")
