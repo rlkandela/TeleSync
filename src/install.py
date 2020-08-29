@@ -2,6 +2,7 @@
 """File for configuring the installation"""
 import os
 import sys
+import shutil
 from telethon import TelegramClient
 import system_config
 import api_config
@@ -77,8 +78,43 @@ def save_api_config():
     else:
         sys.stderr.write("Running as root not allowed.")
 
-# TODO ask for root and copy items to installation dir
+def main_install():
+    # Check that it's not running as root
+    if os.geteuid() != 0:
+        # Get the path to the source
+        src_dir = os.path.dirname(sys.argv[0])
+        if src_dir == "":
+            src_root_dir = ".."
+        else:
+            src_root_dir = os.path.dirname(src_dir)
+            if src_root_dir == "":
+                src_root_dir = "."
+        # Change directory
+        os.chdir(src_root_dir)
+        # Check for the installation folder
+        # TODO make it OS dependent or reimplement it for windows at least
+        if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER):
+            print("{} does not exist\n Creating it".format(system_config.SYNC_INSTALLATION_FOLDER))
+            os.system("sudo mkdir -m 755 {}".format(system_config.SYNC_INSTALLATION_FOLDER))
+            print("{} Has wrong permissions\n Changing owner to {}:{}"
+                  .format(system_config.SYNC_INSTALLATION_FOLDER,os.environ["USER"],
+                          os.environ["USER"]))
+            os.system("sudo chown {}:{} {}".format(os.environ["USER"],os.environ["USER"],
+                                                   system_config.SYNC_INSTALLATION_FOLDER))
+
+        # Check for the subfolders
+        if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER+"config/"):
+            os.mkdir(system_config.SYNC_INSTALLATION_FOLDER+"config/",0o600)
+        if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER+"src/"):
+            os.mkdir(system_config.SYNC_INSTALLATION_FOLDER+"src/",0o700)
+
+        # TODO Copy all the items
+
+    else:
+        sys.stderr.write("Called as root, insecure, exiting.\nCall it without root permissions.")
+
 
 
 if __name__ == "__main__":
-    save_api_config()
+    main_install()
+    # save_api_config()
