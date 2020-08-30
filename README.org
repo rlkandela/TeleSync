@@ -1,0 +1,46 @@
+#+TITLE: TeleSync
+#+AUTHOR: rlkandela
+#+EMAIL: rlkandela@gmail.com
+#+DATE: 30-08-2020
+#+LANGUAGE: en
+#+STARTUP: showall
+
+| Status   | Under Development                     |
+| Location | [[github:rlkandela/TeleSync][https://github.com/rlkandela/TeleSync]] |
+
+* Description
+TeleSync is an utility for uploading all the elements selected to [[https://telegram.org][Telegram]] only when they are updated and downloading them when they are newer than the local ones.
+At the momment it's only supported on linux, and it has been only tested on Archlinux with ~python3.8~.
+
+* Install
+1. Clone this repository.
+   #+BEGIN_SRC bash
+git clone https://github.com/rlkandela/TeleSync
+   #+END_SRC
+
+2. Run ~install.py~ located on the src folder.
+   #+BEGIN_SRC bash
+cd TeleSync/src
+python install.py
+   #+END_SRC
+
+3. You may be asked for root password up to two times.
+
+4. You will be asked to enter the app id, you have to follow the link on the upper line and create an app, this step will be more documented in the future.
+
+5. Copy the app id and paste it on the terminal.
+
+6. Copy the app hash and paste it on the terminal.
+
+7. Enter your phone number with the prefix of the country, for example in case of spain ~0034XXXXXXXXX~ not ~+34XXXXXXXXX~.
+
+8. A message will be sent to your telegram account with a code, copy and paste it or just write it.
+
+9. Now configure ~~/.config/TeleSync/sync.conf~ to add the folders you would like to sync.
+   For example, to sync the ~Documents~ folder, add ~/home/<username>/Documents/~ where ~<username>~ is your username.
+   To add more folders separate them with a newline. You can also add the folders by echoing the path to the ~sync.conf~ file.
+   #+BEGIN_SRC bash
+echo "/absolute/path/to/the/folder" >> ~/.config/TeleSync/sync.conf
+   #+END_SRC
+
+* TODO Use

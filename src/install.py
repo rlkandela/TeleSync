@@ -96,9 +96,9 @@ def main_install():
         # Check for the installation folder
         # TODO make it OS dependent or reimplement it for windows at least
         if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER):
-            print("{} does not exist\n Creating it".format(system_config.SYNC_INSTALLATION_FOLDER))
+            print("{} does not exist\nCreating it".format(system_config.SYNC_INSTALLATION_FOLDER))
             os.system("sudo mkdir -m 755 {}".format(system_config.SYNC_INSTALLATION_FOLDER))
-            print("{} Has wrong permissions\n Changing owner to {}:{}"
+            print("{} Has wrong permissions\nChanging owner to {}:{}"
                   .format(system_config.SYNC_INSTALLATION_FOLDER,os.environ["USER"],
                           os.environ["USER"]))
             os.system("sudo chown {}:{} {}".format(os.environ["USER"],os.environ["USER"],
