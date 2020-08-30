@@ -4,4 +4,5 @@ misc/*
 src/__pycache__/*
 src/TeleSync.session
 .vim/*
-.mypy_cache/
+.mypy_cache/*
+src/.mypy_cache/*

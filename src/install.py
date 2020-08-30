@@ -76,7 +76,7 @@ def save_api_config():
         client.start()
         client.disconnect()
     else:
-        sys.stderr.write("Running as root not allowed.")
+        sys.stderr.write("Called as root, insecure, exiting.\nCall it without root permissions.\n")
 
 def main_install():
     # Check that it's not running as root
@@ -85,12 +85,14 @@ def main_install():
         src_dir = os.path.dirname(sys.argv[0])
         if src_dir == "":
             src_root_dir = ".."
+            src_dir = "."
         else:
             src_root_dir = os.path.dirname(src_dir)
             if src_root_dir == "":
                 src_root_dir = "."
         # Change directory
         os.chdir(src_root_dir)
+
         # Check for the installation folder
         # TODO make it OS dependent or reimplement it for windows at least
         if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER):
@@ -108,13 +110,19 @@ def main_install():
         if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER+"src/"):
             os.mkdir(system_config.SYNC_INSTALLATION_FOLDER+"src/",0o700)
 
-        # TODO Copy all the items
+        if "Documents" in system_config.SYNC_INSTALLATION_FOLDER:
+            print("Debug mode on, not copying files")
 
+        for filename in os.listdir("src/"):
+            # Theoretically, no checks are needed, but they are harmless and helpful
+            if (not filename.endswith(".session")) and (not os.path.isdir("src/"+filename)) and (not "test" in filename) and (not "old" in filename):
+                shutil.copyfile("src/"+filename,
+                                system_config.SYNC_INSTALLATION_FOLDER+"src/"+filename)
     else:
-        sys.stderr.write("Called as root, insecure, exiting.\nCall it without root permissions.")
+        sys.stderr.write("Called as root, insecure, exiting.\nCall it without root permissions.\n")
 
 
 
 if __name__ == "__main__":
     main_install()
-    # save_api_config()
+    save_api_config()

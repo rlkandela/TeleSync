@@ -2,13 +2,13 @@
 """File for loading the local configuration"""
 import os
 
-# DEBUG
-SYNC_INSTALLATION_FOLDER = "/home/rlkandela/Documents/TeleSync/TeleSync/"
-"""Path to the installation folder DEBUG version"""
-# DEBUG
+# # DEBUG
+# SYNC_INSTALLATION_FOLDER = "/home/rlkandela/Documents/TeleSync/TeleSync/"
+# """Path to the installation folder DEBUG version"""
+# # DEBUG
 
-# SYNC_INSTALLATION_FOLDER = "/opt/TeleSync/"
-# """Path to the installation folder"""
+SYNC_INSTALLATION_FOLDER = "/opt/TeleSync/"
+"""Path to the installation folder"""
 
 ### Main program must make sure that its not running as root and ask after it for root password
 SYNC_CONFIG_DIR = "/home/"+os.environ['USER']+"/.config/TeleSync/"
