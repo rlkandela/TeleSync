@@ -37,7 +37,7 @@ python install.py
 
 8. A message will be sent to your telegram account with a code, copy and paste it or just write it.
 
-9. Now configure ~\~/.config/TeleSync/sync.conf~ to add the folders you would like to sync.
+9. Now configure ~$HOME/.config/TeleSync/sync.conf~ to add the folders you would like to sync.
 
    For example, to sync the ~Documents~ folder, add ~/home/<username>/Documents/~ where ~<username>~ is your username.
 
