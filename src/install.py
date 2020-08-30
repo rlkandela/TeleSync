@@ -104,7 +104,7 @@ def main_install():
 
         # Check for the subfolders
         if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER+"config/"):
-            os.mkdir(system_config.SYNC_INSTALLATION_FOLDER+"config/",0o600)
+            os.mkdir(system_config.SYNC_INSTALLATION_FOLDER+"config/",0o700)
         if not os.path.exists(system_config.SYNC_INSTALLATION_FOLDER+"src/"):
             os.mkdir(system_config.SYNC_INSTALLATION_FOLDER+"src/",0o700)
 

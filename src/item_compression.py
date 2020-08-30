@@ -23,7 +23,7 @@ def check_tmp_folder():
     """Function that checks if the temporary folder exists and in case it doesn't it creates it"""
 
     if not os.path.exists(system_config.TMP_FOLDER):
-        os.mkdir(system_config.TMP_FOLDER,0o644)
+        os.mkdir(system_config.TMP_FOLDER,0o755)
 
 def compress_item(output_filename, item):
     """Function for compressing an item
