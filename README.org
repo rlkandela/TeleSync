@@ -14,36 +14,44 @@ TeleSync is an utility for uploading all the elements selected to [[https://tele
 At the momment it's only supported on linux, and it has been only tested on Archlinux with ~python3.8~.
 
 * Install
-1. Clone this repository.
+1. Install dependency ~telethon~.
+   #+BEGIN_SRC bash
+pip install telethon
+   #+END_SRC
+
+2. Clone this repository.
    #+BEGIN_SRC bash
 git clone https://github.com/rlkandela/TeleSync
    #+END_SRC
 
-2. Run ~install.py~ located on the src folder.
+3. Run ~install.py~ located on the src folder.
    #+BEGIN_SRC bash
 cd TeleSync/src
 python install.py
    #+END_SRC
 
-3. You may be asked for root password up to two times.
+4. You may be asked for root password up to two times.
 
-4. You will be asked to enter the app id, you have to follow the link on the upper line and create an app, this step will be more documented in the future.
+5. You will be asked to enter the app id, you have to follow the link on the upper line and create an app, this step will be more documented in the future.
 
-5. Copy the app id and paste it on the terminal.
+6. Copy the app id and paste it on the terminal.
 
-6. Copy the app hash and paste it on the terminal.
+7. Copy the app hash and paste it on the terminal.
 
-7. Enter your phone number with the prefix of the country, for example in case of spain ~0034XXXXXXXXX~ not ~+34XXXXXXXXX~.
+8. Enter your phone number with the prefix of the country, for example in case of spain ~0034XXXXXXXXX~ not ~+34XXXXXXXXX~.
 
-8. A message will be sent to your telegram account with a code, copy and paste it or just write it.
+9. A message will be sent to your telegram account with a code, copy and paste it or just write it.
 
-9. Now configure ~$HOME/.config/TeleSync/sync.conf~ to add the folders you would like to sync.
+10. Now configure ~$HOME/.config/TeleSync/sync.conf~ to add the folders you would like to sync.
 
-   For example, to sync the ~Documents~ folder, add ~/home/<username>/Documents/~ where ~<username>~ is your username.
+    For example, to sync the ~Documents~ folder, add ~/home/<username>/Documents/~ where ~<username>~ is your username.
 
-   To add more folders separate them with a newline. You can also add the folders by echoing the path to the ~sync.conf~ file.
-   #+BEGIN_SRC bash
-echo "/absolute/path/to/the/folder" >> ~/.config/TeleSync/sync.conf
-   #+END_SRC
+    To add more folders separate them with a newline. You can also add the folders by echoing the path to the ~sync.conf~ file.
+    #+BEGIN_SRC bash
+ echo "/absolute/path/to/the/folder" >> ~/.config/TeleSync/sync.conf
+    #+END_SRC
 
-* TODO Use
+* Use
+As the CLI is not yet developed, the way to use it is just ~python /opt/TeleSync/src/tls.py~
+* About
+Currently the CLI is not developed, and multi-device is not supported, there is no way to exclude subfolders from a foler in ~sync.conf~ yet and Telegram puts you in delay mode if you send too many messages.
