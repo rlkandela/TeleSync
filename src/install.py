@@ -115,7 +115,7 @@ def main_install():
 
         for filename in os.listdir("src/"):
             # Theoretically, no checks are needed, but they are harmless and helpful
-            if (not filename.endswith(".session")) and (not os.path.isdir("src/"+filename)) and (not "test" in filename) and (not "old" in filename):
+            if (not filename.endswith(".session")) and (not os.path.isdir("src/"+filename)):
                 shutil.copyfile("src/"+filename,
                                 system_config.SYNC_INSTALLATION_FOLDER+"src/"+filename)
     else:
