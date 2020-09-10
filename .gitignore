@@ -2,7 +2,7 @@ config/*
 misc/*
 .pylintrc
 src/__pycache__/*
-src/TeleSync.session
+src/TeleSync.session*
 .vim/*
 .mypy_cache/*
 src/.mypy_cache/*
